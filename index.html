@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <title>4G2B Project</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Movie Search</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Welcome to Movies Dataset</h1>
-        </div>
-        <form>
-            <div class="search">
-                <input type="text" id="search" placeholder="Search for a movie...">
-                <button type="submit" id="search-btn">Search</button>
-            </div>
-        </form>
-    
-        <table class = table_data id="movies-table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Year</th>
-                    <th>Type</th>
-                    <th>imdbID</th>
-                </tr>
-            </thead>
-            <tbody id="movies-table-body">
-            </tbody>
-        </table>
-
-    <script type = "module" src="index.js"></script>
+  <header>
+    <h1>Mflix</h1>
+  </header>
+  <section class="search-section">
+    <form id="search-form">
+      <input type="text" id="title" placeholder="Movie Title" class="input">
+      <input type="text" id="actor" placeholder="Actor Name" class="input">
+      <button type="submit"><span>Search</span><i></i></button>
+    </form>
+  </section>
+  <section class="results-section">
+    <div id="results" class="results-grid"></div>
+  </section>
+  <section class="results-section">
+    <div id="results" class="results-grid"></div>
+  </section>
+  <section class = "database-search">
+    <h1 class = "oscar_h1">
+      See who won an Oscar for Best Picture in a given year!
+    </h1>
+    <form id="search-form2">
+      <input type="text" id="year" placeholder="Year" class="input">
+      <button type="submit"><span>Search</span><i></i></button>
+    </form>
+  </section>
+  
+  <script type="module" src="app.js"></script>
 </body>
 </html>

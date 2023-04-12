@@ -1,4 +1,4 @@
-import { apiKey } from '/secret.js';
+import { apiKey } from './secret.js';
 const options = {
 	method: 'GET',
 	headers: {
@@ -23,6 +23,9 @@ const func = (event) => {
                 row.insertCell(1).innerHTML = movie.Year;
                 row.insertCell(2).innerHTML = movie.Type;
                 row.insertCell(3).innerHTML = movie.imdbID;
+                row.insertCell(4).innerHTML = '<button>Add this</button>'
+                //console log the movie object to see what properties you can use
+                console.log(movie);
             });
         })
         .catch(err => console.error(err));
