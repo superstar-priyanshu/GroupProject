@@ -65,6 +65,22 @@ async function getNominesByYear(year) {
 	finally{
 		await mongoose.disconnect();
 	}}
+async function getWinnerByYear(year){
+	try{
+		await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+		const actors = await OscarWinner.find({year: year, winner: "True"}, {name:1, _id: 0});
+		return actors;
+	}
+	catch(err){
+		console.log("Error finding name", err);
+		return []
+	}
+	finally{
+		await mongoose.disconnect();
+	}
+}
+
+
 
 
 
