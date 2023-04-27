@@ -3,7 +3,10 @@
 //use require instead of import
 import mongoose from 'mongoose';
 import { mongodbcredentials } from './secret.js';
+//create connection string to MongoDB 
 const connectionString = 'mongodb+srv://' + mongodbcredentials + '.nkgfuzj.mongodb.net/?retryWrites=true&w=majority';
+//Defines the "OscarNominiesSchema" which defines the structure of the documents in the oscar nominies collection. 
+//This Schema has 4 fields type string. 
 const OscarNominiesSchema = new mongoose.Schema({
 	year: String,
 	category: String,
@@ -11,7 +14,7 @@ const OscarNominiesSchema = new mongoose.Schema({
 	entity: String,
 });
 
-
+//Defines the structure of the documents in the oscarwinner collection. This schema has 6 fields type string. 
 const OscarWinnerSchema = new mongoose.Schema({
 	year_film: String,
 	year_cermony: String,
@@ -22,10 +25,15 @@ const OscarWinnerSchema = new mongoose.Schema({
     
 });
 
-// Create a Mongoose model for the Oscar data
+//Create a Mongoose model for the Oscar data
+//Using the schemas defined above, OscarWinner is associated with the Oscar_Winners, the OscarWinnerSchema isused to define the structure of the documents in the oscar winners collection. 
+//Similar with OscarNominies. 
+//Once they are defined, they can be used to performed CRUD operations on the respective MongoDB collections using Mongooes's API 
+
 const OscarWinner = mongoose.model('Oscar_Winners', OscarWinnerSchema, 'the_oscar_award');
 const OscarNominies = mongoose.model('Oscar_Nominies', OscarNominiesSchema, 'oscar_nominies');
 
+//This is an asynchronous function getWinnerByYear accepts a year parameter. It performs a MongoDB database query to find all the films that won an Oscar award for the specified year 
 async function getWinnerByYear(year) {
 	try{
 	await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -37,7 +45,7 @@ async function getWinnerByYear(year) {
 		return [];
 	}
 	finally{
-		await mongoose.disconnect(); //just a comment
+		await mongoose.disconnect(); 
 	}
 
 }
