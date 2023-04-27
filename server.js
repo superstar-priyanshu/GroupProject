@@ -36,7 +36,7 @@ async function getWinnerByYear(year) {
 		return [];
 	}
 	finally{
-		await mongoose.disconnect();
+		await mongoose.disconnect(); //just a comment
 	}
 
 }
