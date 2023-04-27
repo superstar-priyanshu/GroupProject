@@ -1,6 +1,7 @@
 //where the oscar winners, title search, and year search are
 //put the data from a csv file into a mongodb database
 //use require instead of import
+
 import mongoose from 'mongoose';
 import { mongodbcredentials } from './secret.js';
 //create connection string to MongoDB 
@@ -26,14 +27,21 @@ const OscarWinnerSchema = new mongoose.Schema({
 });
 
 //Create a Mongoose model for the Oscar data
-//Using the schemas defined above, OscarWinner is associated with the Oscar_Winners, the OscarWinnerSchema isused to define the structure of the documents in the oscar winners collection. 
+//Using the schemas defined above, OscarWinner is associated with the Oscar_Winners, 
+//the OscarWinnerSchema is used to define the structure of the documents in the oscar winners collection. 
 //Similar with OscarNominies. 
 //Once they are defined, they can be used to performed CRUD operations on the respective MongoDB collections using Mongooes's API 
 
 const OscarWinner = mongoose.model('Oscar_Winners', OscarWinnerSchema, 'the_oscar_award');
 const OscarNominies = mongoose.model('Oscar_Nominies', OscarNominiesSchema, 'oscar_nominies');
 
-//This is an asynchronous function getWinnerByYear accepts a year parameter. It performs a MongoDB database query to find all the films that won an Oscar award for the specified year 
+//This is an asynchronous function getWinnerByYear accepts a year parameter. 
+//It performs a MongoDB database query to find all the films that won an Oscar award for the specified year 
+//The function first connects to the MongoDB database, and when the connection is established, 
+//the function uses the OscarWinner model to perform a "find" operation accepting 2 arguments. 
+//The results of the query are returned as an array of objects that contain the 'film' field value.
+//Returning the film's titles. 
+//The next functions below are pretty much similar logics. 
 async function getWinnerByYear(year) {
 	try{
 	await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -49,6 +57,7 @@ async function getWinnerByYear(year) {
 	}
 
 }
+
 async function getWinnerByActor(actor) {
 	try {
 	  await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
