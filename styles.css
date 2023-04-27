@@ -73,21 +73,21 @@
     font-size: 17px;
     background: #333;
     border: none;
-    color: #fff;
+    color: #fff;// white.
   }
   
   button:hover {
     letter-spacing: 0.25em;
     background: #ff1867;
     color: #ff1867;
-    box-shadow: 0 0 45px #ff1867;
+    box-shadow: 0 0 45px #ff1867;// 3D effect  and  pink shadow color 
   }
   
   button::before {
     content: '';
     position: absolute;
     inset: 2px;
-    background: #222222;
+    background: #222222;//dark gray
   }
   
   button span {
